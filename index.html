@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ワインエキスパート試験 勉強アプリ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍷 ワインエキスパート試験 勉強アプリ</h1>
+            <div class="stats">
+                <span id="score">スコア: 0/0</span>
+                <span id="category">カテゴリ: 全て</span>
+            </div>
+        </header>
+
+        <main>
+            <!-- スタート画面 -->
+            <div id="start-screen" class="screen active">
+                <h2>学習を開始しましょう</h2>
+                <div class="category-selection">
+                    <h3>カテゴリを選択：</h3>
+                    <select id="main-category-select">
+                        <option value="all">全カテゴリ</option>
+                        <option value="基礎">基礎</option>
+                        <option value="フランス">フランス</option>
+                        <option value="イタリア">イタリア</option>
+                    </select>
+                    <select id="sub-category-select" class="hidden">
+                        <option value="all">全サブカテゴリ</option>
+                    </select>
+                    <div id="category-info" class="category-info">
+                        <span id="available-questions">利用可能な問題数: -</span>
+                    </div>
+                </div>
+                <div class="difficulty-selection">
+                    <h3>問題数を選択：</h3>
+                    <select id="question-count">
+                        <option value="10">10問</option>
+                        <option value="20">20問</option>
+                        <option value="50">50問</option>
+                    </select>
+                </div>
+                <button id="start-btn" class="btn primary">学習開始</button>
+                <div class="progress-info">
+                    <p id="progress-text">学習履歴: 準備中...</p>
+                    <div class="study-stats">
+                        <h4>学習統計:</h4>
+                        <div id="category-progress"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 問題画面 -->
+            <div id="quiz-screen" class="screen">
+                <div class="question-header">
+                    <span id="question-counter">1/10</span>
+                    <span id="current-category"></span>
+                </div>
+                <div class="question-card">
+                    <h3 id="question-text">問題文がここに表示されます</h3>
+                    <div id="options-container">
+                        <button class="option-btn" data-index="0">選択肢1</button>
+                        <button class="option-btn" data-index="1">選択肢2</button>
+                        <button class="option-btn" data-index="2">選択肢3</button>
+                        <button class="option-btn" data-index="3">選択肢4</button>
+                    </div>
+                    <div id="explanation" class="explanation hidden">
+                        <h4>解説：</h4>
+                        <p id="explanation-text"></p>
+                    </div>
+                </div>
+                <div class="quiz-controls">
+                    <button id="next-btn" class="btn primary" disabled>次へ</button>
+                </div>
+            </div>
+
+            <!-- 結果画面 -->
+            <div id="result-screen" class="screen">
+                <h2>お疲れさまでした！</h2>
+                <div class="result-summary">
+                    <div class="score-display">
+                        <h3 id="final-score">8/10</h3>
+                        <p id="score-percentage">正答率: 80%</p>
+                    </div>
+                    <div class="performance-analysis">
+                        <h4>分野別結果：</h4>
+                        <div id="category-results"></div>
+                    </div>
+                    <div class="wrong-questions">
+                        <h4>復習推奨問題：</h4>
+                        <ul id="wrong-list"></ul>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <button id="retry-btn" class="btn secondary">同じ条件で再挑戦</button>
+                    <button id="review-btn" class="btn primary">間違えた問題を復習</button>
+                    <button id="home-btn" class="btn secondary">ホームに戻る</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>ワインエキスパート試験合格を目指して頑張りましょう！</p>
+        </footer>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="textbook-loader.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
